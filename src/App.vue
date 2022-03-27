@@ -1,30 +1,64 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+   <form @submit.prevent>
+      <h4>Добавить новый пост</h4>
+      <input
+         type="text"
+         placeholder="Название поста"
+         v-bind:value="title"
+         @input="title = $event.target.value"
+      >
+      <input
+         type="text"
+         placeholder="Описание поста"
+         v-bind:value="body"
+         @input="body = $event.target.value"
+      >
+      <input
+         type="submit"
+         value="Добавить пост"
+         @click="createPost"
+      >
+      <br>
+      <br>
+      <hr>
+   </form>
+   <div>
+      <div v-for="post in posts">
+         <div><strong>Название: </strong>{{ post.title }}</div>
+         <div><strong>Описание: </strong>{{ post.body }}</div>
+         <hr>
+      </div>
+   </div>
 </template>
 
+<script>
+export default {
+   data() {
+      return {
+         posts: [
+            {id: 1, title: 'Js 1', body: 'Description 1'},
+            {id: 2, title: 'Js 2', body: 'Description 2'},
+            {id: 3, title: 'Js 3', body: 'Description 3'},
+         ],
+         title: '',
+         body: ''
+      }
+   },
+   methods: {
+      createPost() {
+         const newPost = {
+            id: Date.now(),
+            title: this.title,
+            body: this.body,
+         }
+         this.posts.push(newPost)
+         this.title = ''
+         this.body = ''
+      }
+   }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
