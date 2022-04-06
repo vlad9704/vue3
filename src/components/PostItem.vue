@@ -4,14 +4,17 @@
       <div><strong>Описание: </strong>{{ post.body }}</div>
       <hr>
    </div>
-   <div>
-      <input type="button" value="Delete">
-   </div>
+   <my-button
+      @click="$emit('remove', post)"
+   >
+      Удалить
+   </my-button>
 </template>
 
 <script>
 export default {
    name: "PostItem",
+
    props: {
       post: {
          type: Object,

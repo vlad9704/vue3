@@ -2,21 +2,21 @@
    <div>
       <form @submit.prevent>
          <h4>Добавить новый пост</h4>
-         <input
-            type="text"
+         <my-input
             placeholder="Название поста"
             v-model="post.title"
-         >
-         <input
             type="text"
+         ></my-input>
+         <my-input
             placeholder="Описание поста"
             v-model="post.body"
-         >
-         <input
-            type="submit"
-            value="Добавить пост"
+            type="text"
+         ></my-input>
+         <my-button
             @click="createPosts"
          >
+            Создать
+         </my-button>
          <br>
          <br>
          <hr>
