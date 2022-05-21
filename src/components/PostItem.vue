@@ -4,12 +4,12 @@
       <div><strong>Название: </strong>{{ post.title }}</div>
       <div><strong>Описание: </strong>{{ post.body }}</div>
       <hr>
+      <my-button
+         @click="$emit('remove', post)"
+      >
+         Удалить
+      </my-button>
    </div>
-   <my-button
-      @click="$emit('remove', post)"
-   >
-      Удалить
-   </my-button>
 </template>
 
 <script>
