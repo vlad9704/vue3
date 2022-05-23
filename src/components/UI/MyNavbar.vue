@@ -3,6 +3,7 @@
       <a href="javascript:void(0)" @click="$router.push('/')">Vue 3</a>
       <div class="navbar_btns">
          <my-button @click="$router.push('/posts')">Посты</my-button>
+         <my-button @click="$router.push('/store')">Vuex</my-button>
          <my-button @click="$router.push('/about')">О нас</my-button>
       </div>
    </div>
