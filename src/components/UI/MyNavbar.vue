@@ -6,6 +6,7 @@
          <my-button @click="$router.push('/store')">Vuex</my-button>
          <my-button @click="$router.push('/composition')">Composition</my-button>
          <my-button @click="$router.push('/about')">О нас</my-button>
+         <my-button @click="$router.push('/task')">Практические задания</my-button>
       </div>
    </div>
 </template>
