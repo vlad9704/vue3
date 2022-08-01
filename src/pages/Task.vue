@@ -21,6 +21,10 @@
         </li>
         <li>
             <h4>Директива V-BIND</h4>
+            <div class="basket">
+                &#128722;
+                <span v-if="basketItem"> - {{ basketItem }}</span>
+            </div>
             <div class="task product_container">
                 <div class="cards_item" v-for="product in products" :id="product.id">
                     <div class="card">
@@ -28,7 +32,7 @@
                         <div class="card_content">
                             <h2 class="card_title">{{ product.title }}</h2>
                             <p class="card_text">US ${{ product.price }}</p>
-                            <my-link :href="product.link">Купить</my-link>
+                            <my-link :data-id="product.id" @click="addBasket()">Купить</my-link>
                         </div>
                     </div>
                 </div>
@@ -46,6 +50,7 @@ export default {
     components: {MyButton, MyInput, MyLink},
     data() {
         return {
+            basketItem: 0,
             message: 'Hello, WaterMelon',
             actors: [
                 {name: 'Morgan Freeman'},
@@ -54,25 +59,23 @@ export default {
                 {name: 'Michael Caine'},
                 {name: 'Robert De Niro'}
             ],
-            products: [{
-                id: '1a',
-                title: 'iPhone XR',
-                price: 899,
-                link: 'https://fructcode.com',
-                img: '⛄'
-            },
+            products: [
+                {
+                    id: '1a',
+                    title: 'iPhone XR',
+                    price: 899,
+                    img: '⛄'
+                },
                 {
                     id: '2b',
                     title: 'iPhone XS MAX',
                     price: 1099,
-                    link: 'https://fructcode.com',
                     img: '☠'
                 },
                 {
                     id: '3c',
                     title: 'iPhone X',
                     price: 1000,
-                    link: 'https://fructcode.com',
                     img: '⚓'
                 },
             ],
@@ -82,6 +85,10 @@ export default {
         cleaneMessage() {
             this.message = ''
         },
+        addBasket() {
+            this.basketItem += 1
+            console.log(this.$attrs)
+        }
     }
 }
 </script>
@@ -120,5 +127,8 @@ li:not(:first-child) {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+.basket {
+    font-size: 35px;
 }
 </style>
